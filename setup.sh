@@ -24,13 +24,20 @@ AZ_REPO=$(lsb_release -cs)
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
     tee /etc/apt/sources.list.d/azure-cli.list
 
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+
+
 # Install packages
 apt-get -y update
 apt-get -y install \
     ansible \
     azure-cli \
     make \
-    packer
+    packer \
+    terraform
 
 # Install AWS Cli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
