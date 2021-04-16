@@ -35,6 +35,7 @@ apt-get -y update
 apt-get -y install \
     ansible \
     azure-cli \
+    jq \
     make \
     packer \
     terraform
